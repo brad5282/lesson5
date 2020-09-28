@@ -70,15 +70,31 @@ public class Student {
     
     public String toString(){
         String str;
-        str = "Name: \t" + name;
+        str = "\nName: \t" + name;
         str += "\nTest1: \t" + test1;
         str += "\nTest2: \t" + test2;
         str += "\nTest3: \t" + test3;
         str +="\n------------------------";
-        str += "\nAverage\t" + getAverage();
+        str += "\nAverage: " + getAverage();
+        
         return str;
         
         
     } 
+
+    public String validateData() {
+        String errormsg = null;
+        if(name.equals(""))
+            errormsg="Name is required.";
+        if(test1<0 || test1>100 || test2<0 || test2> 100 || test3<0 || test3>100)
+            if(errormsg==null)
+                errormsg = "At least 1 mark is out of the acceptable range";
+        else
+                errormsg += "\nAt least 1 mark is out of the acceptable range";
+        if(errormsg != null)
+            errormsg += "\nPlease re-enter all the data\n";
+        return errormsg;
+        
+    }
 }
 
